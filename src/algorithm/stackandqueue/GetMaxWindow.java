@@ -14,7 +14,7 @@ public class GetMaxWindow {
 	private static void print(int[]array) {
 		System.out.println("输出最大窗口：");
 		for (int i = 0; i < array.length; i++) {
-			System.out.println(i);
+			System.out.println(array[i]);
 		}
 	}
 	
@@ -26,7 +26,7 @@ public class GetMaxWindow {
 		int[] result=new int[arr.length-window+1];
 		int index=0;
 		for(int i=0;i<arr.length;i++) {
-			while(!qmax.isEmpty()&&qmax.peekLast()<arr[i]) {
+			while(!qmax.isEmpty()&&arr[qmax.peekLast()]<arr[i]) {
 				//弹出队尾
 				qmax.pollLast();
 			}
@@ -36,7 +36,7 @@ public class GetMaxWindow {
 				qmax.pollFirst();
 			}
 			if(i>=window-1) {
-				result[index++]=qmax.peekFirst();
+				result[index++]=arr[qmax.peekFirst()];
 			}
 		}
 		return result;
